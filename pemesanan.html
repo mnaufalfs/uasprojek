@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pemesanan Travel Liburan</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            max-width: 600px;
+            margin: auto;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        input[type="text"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-top: 5px;
+            transition: border-color 0.3s ease;
+        }
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+        select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg fill="currentColor" width="8" height="8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 8px top 50%;
+            padding-right: 30px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+            input[type="text"],
+            input[type="email"],
+            select,
+            textarea {
+                padding: 8px;
+                font-size: 14px;
+            }
+            input[type="submit"] {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head><!DOCTYPE HTML>
+
+<html>
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>NAUFAL &mdash; Travel Ke Penjuru Dunia</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Free HTML5 Website Template by GetTemplates.co" />
+	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
+	<meta name="author" content="GetTemplates.co" />
+
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+	
+
+	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="css/icomoon.css">
+	<link rel="stylesheet" href="css/themify-icons.css">
+	<link rel="stylesheet" href="css/bootstrap.css">
+
+	<link rel="stylesheet" href="css/magnific-popup.css">
+
+	<link rel="stylesheet" href="css/bootstrap-datepicker.min.css">
+
+	<link rel="stylesheet" href="css/owl.carousel.min.css">
+	<link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+	<link rel="stylesheet" href="css/style.css">
+
+	<script src="js/modernizr-2.6.2.min.js"></script>
+
+	</head>
+	<body>
+		
+	<div class="gtco-loader"></div>
+	
+	<div id="page">
+
+	
+	<nav class="gtco-nav" role="navigation">
+		<div class="gtco-container">
+			
+			<div class="row">
+				<div class="col-sm-4 col-xs-12">
+					<div id="gtco-logo"><a href="index.html">NAUFAL'S TRAVEL<em>.</em></a></div>
+				</div>
+				<div class="col-xs-8 text-right menu-1">
+					<ul>
+						<li><a href="destination.html">Destinasi</a></li>
+						<li class="active">
+							<a href="pemesanan.html">Pemesanan</a>
+						</li>
+						<li><a href="pricing.html">Harga</a></li>
+						<li><a href="contact.html">Kontak</a></li>
+					</ul>	
+				</div>
+			</div>
+			
+		</div>
+	</nav>
+	
+	<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image: url(images/img_4.jpg)">
+		<div class="overlay"></div>
+		<div class="gtco-container">
+			<div class="row">
+				<div class="col-md-12 col-md-offset-0 text-center">
+					<div class="row row-mt-15em">
+
+						<div class="col-md-12 mt-text animate-box" data-animate-effect="fadeInUp">
+							<h1>Jadwalkan untuk semua orang!</h1>	
+						</div>
+						
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</header>
+	
+	<div class="gtco-section border-bottom">
+		<div class="gtco-container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
+					<h2>PESAN PERJALANANMU SEKARANG JUGA</h2>
+				</div>
+			</div>
+            <div class="container">
+                <h2>Pemesanan Travel Liburan</h2>
+                <form action="proses_pemesanan.php" method="POST">
+                    <div class="form-group">
+                        <label for="nama">Nama Lengkap:</label>
+                        <input type="text" id="nama" name="nama" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telepon">Nomor Telepon:</label>
+                        <input type="text" id="telepon" name="telepon" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tujuan">Pilihan Paket:</label>
+                        <select id="tujuan" name="tujuan" required>
+                            <option value="">Pilih Paket</option>
+                            <option value="Kota">Antar Kota</option>
+                            <option value="Pulau">Antar Pulau</option>
+                            <option value="Negara">Antar Negara</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="tanggal">Tanggal Keberangkatan:</label>
+                        <input type="date" id="tanggal" name="tanggal" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pesan">Pesan Tambahan:</label>
+                        <textarea id="pesan" name="pesan" rows="4"></textarea>
+                    </div>
+                    <input type="submit" value="Pesan Sekarang">
+                </form>
+            </div>	
+	<footer id="gtco-footer" role="contentinfo">
+		<div class="gtco-container">
+			<div class="row row-p	b-md">
+
+				<div class="col-md-4">
+					<div class="gtco-widget">
+						<h3>Tentang Kami</h3>
+						<p>Naufal's Travel berkomitmen mengutamakan pelayanan terbaik dan cepat sesuai dengan kebutuhan pelanggan. 
+							Kami siap memberikan “ Pelayanan Sepenuh Hati “. Dengan didukung oleh tenaga kerja yang berpengalaman, 
+							bertanggung jawab dan profesional dalam bidang perjalanan wisata sehingga menjadikan perjalanan Anda lebih nyaman dan menyenangkan.</p>
+					</div>
+				</div>
+
+				<div class="col-md-3 col-md-push-1">
+					<div class="gtco-widget">
+						<h3>Get In Touch</h3>
+						<ul class="gtco-quick-contact">
+							<li><a href="contact.html"><i class="icon-phone"></i> +62 858 8228 7565</a></li>
+							<li><a href="contact.html"><i class="icon-mail2"></i> 1123150040@global.co.id</a></li>
+							<li><a href="contact.html"><i class="icon-chat"></i> Live Chat</a></li>
+						</ul>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="row copyright">
+				<div class="col-md-12">
+					<p class="pull-left">
+						<small class="block">&copy; Muhammad Naufal Faturachman Saleh</small> 
+						<small class="block">NIM : 1123150040 <a href="" target="_blank">TI 23 M CN</a></small>
+					</p>
+                    <p class="pull-right">
+						<ul class="gtco-social-icons pull-right">
+							<li><a href="https://x.com/?lang=id"><i class="icon-twitter"></i></a></li>
+							<li><a href="https://www.facebook.com/?locale=id_ID"><i class="icon-facebook"></i></a></li>
+							<li><a href="https://id.linkedin.com/"><i class="icon-linkedin"></i></a></li>
+							<li><a href="https://global.ac.id"><i class="icon-dribbble"></i></a></li>
+						</ul>
+					</p>
+
+				</div>
+			</div>
+
+		</div>
+	</footer>
+
+	</div>
+
+	<div class="gototop js-top">
+		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+	</div>
+	
+	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery.easing.1.3.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.waypoints.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/jquery.countTo.js"></script>
+
+	<script src="js/jquery.stellar.min.js"></script>
+
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/magnific-popup-options.js"></script>
+	
+	<script src="js/bootstrap-datepicker.min.js"></script>
+	
+	<script src="js/main.js"></script>
+</body>
+</html>
