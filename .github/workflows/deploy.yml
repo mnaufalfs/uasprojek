@@ -1,0 +1,78 @@
+name: Deploy Web App to EC2 via Docker
+
+on:
+  push:
+    branches:
+      - main # Ganti dengan branch utama Anda jika berbeda (misal: master)
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        push: true
+        tags: ${{ secrets.DOCKER_USERNAME }}/projek-uas:latest # Ganti 'my-web-app' dengan nama image yang unik
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+
+    - name: Deploy to EC2
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
+        EC2_HOST: ${{ secrets.EC2_HOST }}
+        EC2_USER: ${{ secrets.EC2_USER }}
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }} # Perlu untuk login di EC2
+      run: |
+        # Buat direktori .ssh jika belum ada dan atur izin
+        mkdir -p ~/.ssh
+        chmod 700 ~/.ssh
+
+        # Tulis kunci SSH privat ke file
+        echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+
+        # Tambahkan host EC2 ke known_hosts untuk menghindari prompt konfirmasi SSH pertama kali
+        # Ini penting agar GitHub Actions runner tidak terjebak prompt.
+        ssh-keyscan -H "$EC2_HOST" >> ~/.ssh/known_hosts
+
+        # Perbarui dan instal Docker di EC2 jika belum ada
+        # (Blok ini hanya akan dijalankan saat pertama kali atau jika Docker belum terinstal)
+        # Pastikan user 'ubuntu' ditambahkan ke grup 'docker' agar tidak perlu sudo untuk perintah docker
+        ssh -i ~/.ssh/id_rsa "$EC2_USER@$EC2_HOST" << 'EOF'
+          sudo apt-get update -y
+          sudo apt-get install -y docker.io
+          sudo systemctl start docker
+          sudo systemctl enable docker
+          sudo usermod -aG docker ubuntu # Tambahkan user ubuntu ke grup docker
+          # Untuk memastikan perubahan grup berlaku dalam sesi SSH ini
+          # Kita perlu memulai sub-shell atau menggunakan newgrp.
+          # Untuk skrip otomatis, ini sedikit tricky, tapi sudo su - ubuntu -c "..." bisa membantu
+        EOF
+
+        # Login Docker di EC2 dan pull/run image
+        # Kita menggunakan sudo -H -u ubuntu bash -c "" untuk menjalankan perintah sebagai user ubuntu
+        # setelah user ditambahkan ke grup docker. Ini membantu menghindari masalah permissions.
+        ssh -i ~/.ssh/id_rsa "$EC2_USER@$EC2_HOST" "sudo -H -u ubuntu bash -c '
+          docker login -u \"$DOCKER_USERNAME\" -p \"$DOCKER_PASSWORD\"
+          docker pull \"$DOCKER_USERNAME\"/my-web-app:latest
+          docker stop my-web-app-container || true
+          docker rm my-web-app-container || true
+          docker run -d --name my-web-app-container -p 80:80 \"$DOCKER_USERNAME\"/my-web-app:latest
+          docker system prune -f
+        '"
