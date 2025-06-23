@@ -37,7 +37,7 @@ jobs:
         EC2_HOST: ${{ secrets.EC2_HOST }}
         EC2_USER: ${{ secrets.EC2_USER }}
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }} # Perlu untuk login di EC2
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }} # Perlu untuk login di EC2 
       run: |
         # Buat direktori .ssh jika belum ada dan atur izin
         mkdir -p ~/.ssh
