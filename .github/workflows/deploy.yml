@@ -70,9 +70,9 @@ jobs:
         # setelah user ditambahkan ke grup docker. Ini membantu menghindari masalah permissions.
         ssh -i ~/.ssh/id_rsa "$EC2_USER@$EC2_HOST" "sudo -H -u ubuntu bash -c '
           docker login -u \"$DOCKER_USERNAME\" -p \"$DOCKER_PASSWORD\"
-          docker pull \"$DOCKER_USERNAME\"/my-web-app:latest
-          docker stop my-web-app-container || true
-          docker rm my-web-app-container || true
-          docker run -d --name my-web-app-container -p 80:80 \"$DOCKER_USERNAME\"/my-web-app:latest
+          docker pull \"$DOCKER_USERNAME\"/projek-uas:latest
+          docker stop projek-uas || true
+          docker rm projek-uas || true
+          docker run -d --name projek-uas -p 80:80 \"$DOCKER_USERNAME\"/projek-uas:latest
           docker system prune -f
         '"
